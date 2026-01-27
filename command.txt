@@ -1,0 +1,14 @@
+docker compose build --no-cache ap
+
+docker compose --env-file .env up -d
+docker compose down
+export DATABASE_URL=postgresql+psycopg2://alchemy_user:strong_password_123@localhost:5432/postgres
+
+export DATABASE_URL=postgresql+asyncpg://alchemy_user:strong_password_123@localhost:5432/postgres
+celery -A app.worker.celery:app worker --loglevel=info
+celery -A app.worker.celery:app beat --loglevel=info
+
+
+
+alembic revision --autogenerate
+alembic upgrade head
