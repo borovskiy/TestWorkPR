@@ -5,6 +5,8 @@ docker compose down
 export DATABASE_URL=postgresql+psycopg2://alchemy_user:strong_password_123@localhost:5432/postgres
 
 export DATABASE_URL=postgresql+asyncpg://alchemy_user:strong_password_123@localhost:5432/postgres
+export BROKER_URL=redis://localhost:6379/0
+
 celery -A app.worker.celery:app worker --loglevel=info
 celery -A app.worker.celery:app beat --loglevel=info
 

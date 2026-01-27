@@ -24,12 +24,12 @@ app.conf.beat_schedule = {
 
     "btc_usd": {
         "task": 'app.worker.tasks.test_task',
-        "schedule": timedelta(minutes=1),
+        "schedule": timedelta(seconds=10),
         "args": (TypeCurrency.btc_usd.name,),
     },
     "eth_usd": {
         "task": 'app.worker.tasks.test_task',
-        "schedule": timedelta(minutes=1),
+        "schedule": timedelta(seconds=10),
         "args": (TypeCurrency.eth_usd.name,),
     },
 }

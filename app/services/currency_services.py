@@ -34,7 +34,7 @@ class PriceRepoService:
         ## Коммит вынесен сюда по привычке юнит оф ворка
         logging.info("process_update_currency")
         result = await self.get_expose_currency(type_currency)
-        new_price_obj = Ticker(type_currency=type_currency.value, price=result)
+        new_price_obj = Ticker(ticker=type_currency.value, price=result)
         logging.info("new_price_obj {0}".format(new_price_obj))
         await self.add_currency(new_price_obj.to_dict())
         await self.session.commit()

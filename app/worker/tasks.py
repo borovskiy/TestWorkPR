@@ -27,8 +27,10 @@ def test_task(type_currency: str):
 async def async_process_currency(type_currency_str: str):
     """Асинхронная логика обработки валюты"""
     async with get_async_db() as session:
+        logging.info("async_process_currency {0}".format(type_currency_str))
         service = PriceRepoService(session)
         type_currency = TypeCurrency.parse(type_currency_str)
         data = await service.process_add_in_db_currency(type_currency)
         logging.info("Result {0} currency worker".format(data))
+        await session.close()
         return True
