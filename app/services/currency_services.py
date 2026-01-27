@@ -3,7 +3,7 @@ from math import ceil
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import TypeCurrency, Price
+from app.models import TypeCurrency, Ticker
 from app.repository.price_repo import PriceRepo
 from app.schemas.currency_schema_response import CurrencyFiltersSchema
 from app.schemas.paginate_schema import PaginationGetCurrencies, CurrenciesPage, PageMeta
@@ -34,7 +34,7 @@ class PriceRepoService:
         ## Коммит вынесен сюда по привычке юнит оф ворка
         logging.info("process_update_currency")
         result = await self.get_expose_currency(type_currency)
-        new_price_obj = Price(type_currency=type_currency.value, price=result)
+        new_price_obj = Ticker(type_currency=type_currency.value, price=result)
         logging.info("new_price_obj {0}".format(new_price_obj))
         await self.add_currency(new_price_obj.to_dict())
         await self.session.commit()

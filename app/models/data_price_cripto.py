@@ -19,10 +19,10 @@ class TypeCurrency(enum.Enum):
         return cls(value)
 
 
-class Price(BaseModel):
+class Ticker(BaseModel):
     """
     Модель с данными о валютах
     """
-    __tablename__ = "cur_price"
-    type_currency: Mapped[TypeCurrency] = mapped_column(Enum(TypeCurrency), nullable=False)
+    __tablename__ = "ticker"
+    ticker: Mapped[TypeCurrency] = mapped_column(Enum(TypeCurrency), nullable=False)
     price: Mapped[float] = mapped_column(Float(), nullable=False)

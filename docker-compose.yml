@@ -88,51 +88,51 @@ services:
     volumes:
       - redis_data:/data
 
-  app:
-    build: .
-    container_name: app
-    ports:
-      - "5050:5050"
-    env_file:
-        - web.env
-    command: >
-      sh -c "
-      echo 'Waiting for PostgreSQL...' &&
-      sleep 3 &&
-      echo 'Running migrations...' &&
-      uv run alembic upgrade head &&
-      echo 'Starting app...' &&
-      uv run python -m app.main
-      "
-    networks:
-      - crm_network
-    depends_on:
-      postgres:
-        condition: service_healthy
-
-  worker-beat:
-    build: .
-    container_name: worker-beat
-    env_file:
-        - web.env
-    command: uv run celery -A app.worker.celery beat --loglevel=info
-    networks:
-      - crm_network
-    depends_on:
-      - redis
-      - app
-
-  worker:
-    build: .
-    container_name: worker
-    env_file:
-      - web.env
-    command: uv run celery -A app.worker.celery worker --loglevel=info
-    networks:
-      - crm_network
-    depends_on:
-      - redis
-      - app
+#  app:
+#    build: .
+#    container_name: app
+#    ports:
+#      - "5050:5050"
+#    env_file:
+#        - web.env
+#    command: >
+#      sh -c "
+#      echo 'Waiting for PostgreSQL...' &&
+#      sleep 3 &&
+#      echo 'Running migrations...' &&
+#      uv run alembic upgrade head &&
+#      echo 'Starting app...' &&
+#      uv run python -m app.main
+#      "
+#    networks:
+#      - crm_network
+#    depends_on:
+#      postgres:
+#        condition: service_healthy
+#
+#  worker-beat:
+#    build: .
+#    container_name: worker-beat
+#    env_file:
+#        - web.env
+#    command: uv run celery -A app.worker.celery beat --loglevel=info
+#    networks:
+#      - crm_network
+#    depends_on:
+#      - redis
+#      - app
+#
+#  worker:
+#    build: .
+#    container_name: worker
+#    env_file:
+#      - web.env
+#    command: uv run celery -A app.worker.celery worker --loglevel=info
+#    networks:
+#      - crm_network
+#    depends_on:
+#      - redis
+#      - app
 
 
 volumes:

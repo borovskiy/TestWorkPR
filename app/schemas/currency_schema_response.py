@@ -11,14 +11,14 @@ from app.schemas.base_schema import BaseModelSchema
 
 class CurrencySchema(BaseModelSchema):
     id: int
-    type_currency: str
+    ticker: str
     price: float
     created_at: int
 
 
 class CurrencyFiltersSchema(BaseModelSchema):
     ## Схема для параметров с валидацией по логике определенной
-    type_currency: TypeCurrency
+    ticker: TypeCurrency
     last_value: Optional[bool] = Query(
         False,
         description="Получить только последние значения"

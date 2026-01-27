@@ -3,7 +3,7 @@ import logging
 from sqlalchemy import select, func, desc, and_
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import Price
+from app.models import Ticker
 from app.schemas.currency_schema_response import CurrencyFiltersSchema
 from app.schemas.paginate_schema import PaginationGetCurrencies
 
@@ -15,7 +15,7 @@ class PriceRepo:
             {"component": self.__class__.__name__}
         )
         self.session = session
-        self.main_model = Price
+        self.main_model = Ticker
 
     async def add_currency_value(self, data: dict):
         ## добавление валюты в БД
@@ -35,7 +35,7 @@ class PriceRepo:
         page_size = pag_data.page_size
 
         stmt = select(self.main_model).where(
-            self.main_model.type_currency == filters.type_currency
+            self.main_model.type_currency == filters.ticker
         ).order_by(desc(self.main_model.created_at))
 
         if filters.last_value:
