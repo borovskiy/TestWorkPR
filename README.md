@@ -14,3 +14,7 @@
 
 
 Что в итоге
+Жмакаем
+docker compose --env-file .env up -d
+открыаем http://localhost:5050/docs#
+тасм все есть
