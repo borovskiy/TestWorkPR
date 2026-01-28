@@ -4,7 +4,7 @@ from sqlalchemy import select, func, desc, and_
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import Ticker
-from app.schemas.currency_schema_response import CurrencyFiltersSchema
+from app.schemas.ticker_schema_response import CurrencyFiltersSchema
 from app.schemas.paginate_schema import PaginationGetCurrencies
 
 

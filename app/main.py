@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from app.api import currencies_route
+from app.api import ticker_route
 
 
 def create_app() -> FastAPI:

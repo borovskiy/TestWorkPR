@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends
 
 from app.core.db_connector import price_repo_services
 from app.models import TypeCurrency
-from app.schemas.currency_schema_response import CurrencyFiltersSchema
+from app.schemas.ticker_schema_response import CurrencyFiltersSchema
 from app.schemas.paginate_schema import PaginationGetCurrencies, CurrenciesPage
-from app.services.currency_services import PriceRepoService
+from app.services.ticker_services import PriceRepoService
 
 router = APIRouter(
     prefix="/currencies",

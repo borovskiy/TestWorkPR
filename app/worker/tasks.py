@@ -3,7 +3,7 @@ import logging
 
 from app.core.db_connector import get_async_db
 from app.models import TypeCurrency
-from app.services.currency_services import PriceRepoService
+from app.services.ticker_services import PriceRepoService
 from app.worker.celery import app
 
 

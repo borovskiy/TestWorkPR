@@ -3,7 +3,7 @@ from typing import Sequence
 from pydantic import Field
 
 from app.schemas.base_schema import BaseModelSchema
-from app.schemas.currency_schema_response import CurrencySchema
+from app.schemas.ticker_schema_response import CurrencySchema
 
 ## Схемы для пагинаций
 class PaginationGetBase(BaseModelSchema):

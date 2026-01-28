@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import TypeCurrency, Ticker
 from app.repository.price_repo import PriceRepo
-from app.schemas.currency_schema_response import CurrencyFiltersSchema
+from app.schemas.ticker_schema_response import CurrencyFiltersSchema
 from app.schemas.paginate_schema import PaginationGetCurrencies, CurrenciesPage, PageMeta
 from app.utils.derebit_connector import ConnectorDeribit
 

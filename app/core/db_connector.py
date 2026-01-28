@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine, AsyncSession
 
-from app.services.currency_services import PriceRepoService
+from app.services.ticker_services import PriceRepoService
 
 SessionLocal = async_sessionmaker(
     bind=create_async_engine(os.environ.get("DATABASE_URL"), echo=False, ),
