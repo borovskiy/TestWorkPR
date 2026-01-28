@@ -15,6 +15,7 @@
 
 Что в итоге
 Жмакаем
+(Надеюсь хватит ума поставить докер композ?)
 docker compose --env-file web.env up -d
 открыаем http://localhost:5050/docs#
 там все есть
