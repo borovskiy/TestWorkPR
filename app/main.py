@@ -6,7 +6,7 @@ from app.api import ticker_route
 
 def create_app() -> FastAPI:
     app = FastAPI(title="Currency", version="0.1.0")
-    app.include_router(currencies_route.router, prefix="/api/v1")
+    app.include_router(ticker_route.router, prefix="/api/v1")
 
     return app
 

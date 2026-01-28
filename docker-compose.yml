@@ -20,7 +20,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
   pgadmin:
     image: dpage/pgadmin4:8
     container_name: pgadmin
@@ -36,7 +35,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-
   kafka:
     image: apache/kafka:latest
     container_name: broker
@@ -77,7 +75,6 @@ services:
     depends_on:
       kafka:
         condition: service_healthy
-
   redis:
     image: redis:7-alpine
     restart: always
@@ -87,7 +84,6 @@ services:
       - crm_network
     volumes:
       - redis_data:/data
-
   app:
     build: .
     container_name: app
@@ -109,7 +105,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-
   worker-beat:
     build: .
     container_name: worker-beat
@@ -121,7 +116,6 @@ services:
     depends_on:
       - redis
       - app
-
   worker:
     build: .
     container_name: worker
@@ -133,7 +127,6 @@ services:
     depends_on:
       - redis
       - app
-
 
 volumes:
   postgres_data:

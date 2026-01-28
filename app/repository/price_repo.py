@@ -35,7 +35,7 @@ class PriceRepo:
         page_size = pag_data.page_size
 
         stmt = select(self.main_model).where(
-            self.main_model.type_currency == filters.ticker
+            self.main_model.ticker == filters.ticker
         ).order_by(desc(self.main_model.created_at))
 
         if filters.last_value:
